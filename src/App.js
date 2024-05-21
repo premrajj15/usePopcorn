@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import StarRating from "./StarRating";
-import { useMoviies } from "./useMovies";
+import { useMovies } from "./useMovies";
 import { useLocalStorageState } from "./useLocalStorageState";
 import { useKey } from "./useKey";
 
@@ -14,7 +14,7 @@ export default function App() {
 
   const [selectedId, setSelectedId] = useState("");
 
-  const { movies, isLoading, error } = useMoviies(query);
+  const { movies, isLoading, error } = useMovies(query);
 
   const [watched, setWatched] = useLocalStorageState([], "watched");
 
@@ -262,7 +262,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       async function getMovieDetails() {
         setIsLoading(true);
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
+          `https://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
         );
         const data = await res.json();
         setMovie(data);
