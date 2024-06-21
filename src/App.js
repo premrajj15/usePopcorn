@@ -212,8 +212,8 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
 
   useEffect(
     function () {
-      // console.log(countRef.current);
-      if (userRating) countRef.current = countRef.current++;
+      console.log(countRef.current);
+      if (userRating) countRef.current++;
     },
     [userRating]
   );
@@ -249,7 +249,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       imdbRating: Number(imdbRating),
       runtime: Number(runtime.split(" ").at(0)),
       userRating,
-      countRatingDecisions: countRef.current,
+      countRatingDecision: countRef.current,
     };
     onAddWatched(newWatchedMovie);
     onCloseMovie();
